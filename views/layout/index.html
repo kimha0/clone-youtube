@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  {{@extendsFile('layout/head.html')}}
+  {{/extendsFile}}
+  <title>{{it.title}}</title>
+</head>
+<body>
+
+{{@extendsFile('layout/header.html')}}
+{{/extendsFile}}
+
+{{@block('main')}}
+{{/block}}
+
+</body>
+</html>

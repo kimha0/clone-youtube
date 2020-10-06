@@ -1,0 +1,5 @@
+@import './variable';
+
+* {
+  font-family: var(--default-font-family);
+}

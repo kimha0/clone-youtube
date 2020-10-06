@@ -6,7 +6,10 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "prebuild": "rimraf dist",
+    "prebuild": "rimraf dist && rimraf public/css && yarn build:css",
+    "prebuild:css": "node-sass -include-path -r ./public/scss -o ./public/css",
+    "build:css": "postcss ./public/css -u autoprefixer -r -m",
+    "css:watch": "node-sass -include-path -r ./public/scss -o ./public/css -w",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
@@ -24,9 +27,13 @@
     "@nestjs/common": "^7.0.0",
     "@nestjs/core": "^7.0.0",
     "@nestjs/platform-express": "^7.0.0",
+    "autoprefixer": "^10.0.1",
+    "node-sass": "^4.14.1",
+    "postcss": "^8.1.1",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^6.5.4"
+    "rxjs": "^6.5.4",
+    "squirrelly": "^8.0.8"
   },
   "devDependencies": {
     "@nestjs/cli": "^7.0.0",
@@ -42,6 +49,7 @@
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-import": "^2.20.1",
     "jest": "26.4.2",
+    "postcss-cli": "^8.0.0",
     "prettier": "^1.19.1",
     "supertest": "^4.0.2",
     "ts-jest": "26.2.0",
